@@ -28,6 +28,7 @@ type (
 		Namespace      string   `json:"namespace"`
 		Release        string   `json:"release"`
 		Chart          string   `json:"chart"`
+		Repo           string   `json:"repo"`
 		Version        string   `json:"version"`
 		Values         string   `json:"values"`
 		ValuesFiles    string   `json:"values_files"`
@@ -71,7 +72,13 @@ func setPushEventCommand(p *Plugin) {
 	if p.Config.Release != "" {
 		upgrade = append(upgrade, p.Config.Release)
 	}
+
 	upgrade = append(upgrade, p.Config.Chart)
+	if p.Config.Repo != "" {
+		upgrade = append(upgrade, "--repo")
+		upgrade = append(upgrade, p.Config.Repo)
+	}
+
 	if p.Config.Version != "" {
 		upgrade = append(upgrade, "--version")
 		upgrade = append(upgrade, p.Config.Version)

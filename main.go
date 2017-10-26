@@ -50,6 +50,11 @@ func main() {
 			EnvVar: "PLUGIN_CHART,CHART",
 		},
 		cli.StringFlag{
+			Name:   "repo",
+			Usage:  "specify the repo url to use.",
+			EnvVar: "PLUGIN_REPO,REPO",
+		},
+		cli.StringFlag{
 			Name:   "chart-version",
 			Usage:  "specify the exact chart version to use. If this is not specified, the latest version is used",
 			EnvVar: "PLUGIN_CHART_VERSION,CHART_VERSION",
